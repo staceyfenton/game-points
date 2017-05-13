@@ -1,0 +1,66 @@
+.scoreboard {
+	@media (min-width: $tablet) {
+		background: $light-grey;
+		width: 35%;
+	}
+
+	h2 {
+		background: $orange;
+		color: $white;
+		padding: 10px 20px;
+	}
+
+	table {
+		border-collapse: collapse;
+		width: 100%;
+
+		th,
+		td {
+			border-bottom: 1px solid $grey;
+			padding: 10px 5px;
+			text-align: center;
+		}
+
+		span {
+			display: inline-block;
+			height: 27px;
+			line-height: 27px;
+			width: 32px;
+		}
+	}
+
+	button {
+		background: $orange;
+		border: 0;
+		border-radius: 2px;
+		box-shadow: 0 5px 0 0 darken($orange, 20%);
+		color: $white;
+		cursor: pointer;
+		font-family: 'Montserrat', sans-serif;
+		font-weight: bold;
+		font-size: 16px;
+		line-height: 24px;
+		min-width: 11rem;
+		padding: 12px;
+		transition: all .3s;
+
+		&:hover {
+			background: darken($orange, 10%);
+		}
+	}
+
+	.bonuses,
+	.total {
+		border-bottom: 1px solid $grey;
+		padding: 20px;
+		text-align: left;
+	}
+
+	.score-summary {
+		text-align: center;
+
+		button {
+			margin: 20px 0;
+		}
+	}
+}

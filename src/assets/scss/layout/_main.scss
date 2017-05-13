@@ -1,0 +1,6 @@
+main {
+	@media (min-width: $tablet) {
+		display: flex;
+		min-height: calc(100% - 90px);
+	}
+}

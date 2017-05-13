@@ -1,0 +1,29 @@
+.item-a,
+.item-b,
+.item-c,
+.item-d {
+	border-radius: .050em;
+	color: $white;
+	text-shadow: 1px 1px 1px rgba($almost-black, .5);
+  position: relative;
+}
+
+.item-a {
+	background: $purple;
+	box-shadow: 0 .125em 0 0 darken($purple, 20%);	
+}
+
+.item-b {
+	background: $red;
+	box-shadow: 0 .125em 0 0 darken($red, 20%);
+}
+
+.item-c {
+	background: $green;
+	box-shadow: 0 .125em 0 0 darken($green, 20%);
+}
+
+.item-d {
+	background: $blue;
+	box-shadow: 0 .125em 0 0 darken($blue, 20%);
+}
