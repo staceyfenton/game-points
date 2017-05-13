@@ -17,7 +17,8 @@
 
       <div class="scoreboard">
         <h2>Player items</h2>
-        <table>
+        <p class="no-items" v-if="!sortedItems.length">You don't have any items yet.<br>Press an item to collect it.</p>
+        <table v-if="sortedItems.length">
           <thead>
             <tr>
               <th>Item</th>
@@ -34,12 +35,12 @@
           </tbody>
         </table>
 
-        <div class="bonuses">
+        <div class="bonuses" v-if="sortedItems.length">
           Bonuses: {{ bonuses }}
         </div>
 
         <div class="score-summary">
-          <div class="total">
+          <div class="total" v-if="sortedItems.length">
             Total: {{ total }}
           </div>
           <button @click="resetGame">New game</button>
@@ -97,7 +98,8 @@
 
     computed: {
       sortedItems() {
-        return this.items.concat().sort((a, b) => a.totalScore < b.totalScore ? 1 : -1);
+        const filterScores = this.items.filter(item => item.totalScore > 0);
+        return filterScores.sort((a, b) => a.totalScore < b.totalScore ? 1 : -1);
       }
     },
 
@@ -118,7 +120,7 @@
           currentItem.totalScore = (currentItem.basePoints * currentItem.quantity) + currentItem.bonusPoints;
 
           // update bonus total
-          this.bonuses = this.bonuses + currentItem.bonusPoints;
+          this.bonuses = this.calculateBonuses();
 
         } else {
           // no bonus points, just update the total
@@ -132,6 +134,11 @@
       calculateTotal() {
         const totals = this.items.map(item => item.totalScore);
         return totals.reduce((a, b) => a + b, 0);
+      },
+
+      calculateBonuses() {
+        const bonuses = this.items.map(item => item.bonusPoints);
+        return bonuses.reduce((a, b) => a + b, 0);
       },
     
       resetGame() {

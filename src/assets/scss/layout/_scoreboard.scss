@@ -49,6 +49,11 @@
 		}
 	}
 
+	.no-items {
+		margin: 20px;
+		text-align: center;
+	}
+
 	.bonuses,
 	.total {
 		border-bottom: 1px solid $grey;
